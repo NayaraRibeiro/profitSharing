@@ -18,7 +18,7 @@ public class InputTest {
     @Test
     public void shouldCreateAnalisticEmployeeRoleInformation() throws InstantiationException, IllegalAccessException, ClassNotFoundException, NoSuchMethodException, InvocationTargetException {
         Company company = new Company(100000, 10);
-        input = new Input(2, "Analista");
+        input = new Input(2, "Analistic");
 
         input.createEmployeeRoleInformation(company);
 
@@ -38,7 +38,7 @@ public class InputTest {
     @Test
     public void shouldCreateManagerEmployeeRoleInformation() throws InstantiationException, IllegalAccessException, ClassNotFoundException, NoSuchMethodException, InvocationTargetException {
         Company company = new Company(100000, 10);
-        input = new Input(2, "Gerente");
+        input = new Input(2, "Manager");
 
         input.createEmployeeRoleInformation(company);
 
