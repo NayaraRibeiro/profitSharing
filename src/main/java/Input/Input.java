@@ -93,18 +93,9 @@ public class Input {
     }
 
     public Employee createEmployeeRoleInformation(Company company) throws IllegalAccessException, InstantiationException, ClassNotFoundException, NoSuchMethodException, InvocationTargetException {
-
-        Class<?> clazz = Class.forName("employee." + getEmployeeRole());
+        Class<?> clazz = Class.forName("employee." + this.employeeRole);
         Constructor<?> constructor = clazz.getConstructor(Integer.class, Company.class);
         employee = (Employee) constructor.newInstance(annualEmployeePerformance, company);
-        return employee;
-    }
-
-    public String getEmployeeRole() {
-        return employeeRole;
-    }
-
-    public Employee getEmployee() {
         return employee;
     }
 

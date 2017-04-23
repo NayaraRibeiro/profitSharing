@@ -1,6 +1,7 @@
 package Input;
 import company.Company;
 import employee.Analistic;
+import employee.Employee;
 import employee.Manager;
 import employee.Trainee;
 import org.junit.Test;
@@ -20,9 +21,9 @@ public class InputTest {
         Company company = new Company(100000, 10);
         input = new Input(2, "Analistic");
 
-        input.createEmployeeRoleInformation(company);
+        Employee employee = input.createEmployeeRoleInformation(company);
 
-        assertThat(input.getEmployee(), instanceOf(Analistic.class));
+        assertThat(employee, instanceOf(Analistic.class));
     }
 
     @Test
@@ -30,9 +31,9 @@ public class InputTest {
         Company company = new Company(100000, 10);
         input = new Input(2, "Trainee");
 
-        input.createEmployeeRoleInformation(company);
+        Employee employee = input.createEmployeeRoleInformation(company);
 
-        assertThat(input.getEmployee(), instanceOf(Trainee.class));
+        assertThat(employee, instanceOf(Trainee.class));
     }
 
     @Test
@@ -40,8 +41,8 @@ public class InputTest {
         Company company = new Company(100000, 10);
         input = new Input(2, "Manager");
 
-        input.createEmployeeRoleInformation(company);
+        Employee employee = input.createEmployeeRoleInformation(company);
 
-        assertThat(input.getEmployee(), instanceOf(Manager.class));
+        assertThat(employee, instanceOf(Manager.class));
     }
 }
