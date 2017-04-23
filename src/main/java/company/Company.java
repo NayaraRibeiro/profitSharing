@@ -2,10 +2,10 @@ package company;
 
 public class Company {
     private Integer goalOfProfitSharing;
-    private Integer profitMargin;
+    private double profitMargin;
     private Integer workerQuantity;
 
-    public Company(Integer profitMargin, Integer workerQuantity) {
+    public Company(double profitMargin, Integer workerQuantity) {
         this.profitMargin = profitMargin;
         this.workerQuantity = workerQuantity;
         this.goalOfProfitSharing = 10000 * workerQuantity;

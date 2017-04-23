@@ -16,12 +16,4 @@ public class TraineeTest {
         Double profitSharingBenefit = trainee.calculateProfitSharingBenefit();
         assertThat(profitSharingBenefit, is((double) 12000));
     }
-
-    @Test
-    public void shouldReturnZeroWhenCalculateProfitSharingBenefit(){
-        trainee = new Trainee(3, new Company(99000, 10));
-
-        Double profitSharingBenefit = trainee.calculateProfitSharingBenefit();
-        assertThat(profitSharingBenefit, is((double) 0));
-    }
 }

@@ -15,12 +15,9 @@ public class Employee {
     }
 
     public Double calculateProfitSharingBenefit() {
-        if(company.hasProfitSharing()) {
-            Double profitSharingBenefit = annualWorkerPerformance * grade *
-                    company.calculatePartialProfitMargin();
-            return profitSharingBenefit;
-        }
-        return 0.0;
+        Double profitSharingBenefit = annualWorkerPerformance * grade *
+                company.calculatePartialProfitMargin();
+        return profitSharingBenefit;
     }
 
     public void showProfitSharingBenefit() {
