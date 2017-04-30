@@ -6,15 +6,16 @@ import java.lang.reflect.InvocationTargetException;
 
 public class App {
 
-    public static void main(String [] args) throws InstantiationException, IllegalAccessException, ClassNotFoundException, NoSuchMethodException, InvocationTargetException {
+    public static void main(String [] args) throws ClassNotFoundException, NoSuchMethodException, InstantiationException, IllegalAccessException, InvocationTargetException {
         Input input = new Input();
-        input.readCompanyInformation();
 
+        input.readCompanyInformation();
         Company company = new Company(input.getProfitMargin(), input.getEmployeeQuantity());
 
         if (company.hasProfitSharing()){
+
             input.readEmployeeInformation();
-            Employee employee = input.createEmployeeRoleInformation(company);
+            Employee employee = new Employee(input.getEmployeeRole(), input.getEmployeePerformance(), company.calculatePartialProfitMargin());
             employee.showProfitSharingBenefit();
         } else {
             System.out.println("Não haverá participação dos lucros.");

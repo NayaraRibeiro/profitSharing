@@ -1,10 +1,21 @@
 package employee;
 
-import company.Company;
+public class Manager extends EmployeeRole implements IEmployeeRole{
 
-public class Manager extends Employee implements IEmployee{
+    public static final int MANAGER_GRADE = 3;
+    private final String role;
 
-    public Manager(Integer annualWorkerPerformance, Company company) {
-        super(annualWorkerPerformance, 3, company);
+    public Manager(String role) {
+        super(role);
+        this.role = role;
+    }
+
+    @Override
+    public Integer getGrade() {
+
+        if(role.equals(MANAGER))
+            return MANAGER_GRADE;
+
+        return NOT_FOUND;
     }
 }

@@ -1,6 +1,8 @@
 package company;
 
 public class Company {
+    public static final int MULTIPLIER_INDEX = 10000;
+    public static final double FOURTY_PERCENT_INDEX = 0.4;
     private Integer goalOfProfitSharing;
     private double profitMargin;
     private Integer workerQuantity;
@@ -8,7 +10,7 @@ public class Company {
     public Company(double profitMargin, Integer workerQuantity) {
         this.profitMargin = profitMargin;
         this.workerQuantity = workerQuantity;
-        this.goalOfProfitSharing = 10000 * workerQuantity;
+        this.goalOfProfitSharing = MULTIPLIER_INDEX * workerQuantity;
     }
 
     public boolean hasProfitSharing() {
@@ -19,7 +21,6 @@ public class Company {
     }
 
     public Double calculatePartialProfitMargin() {
-        Double partialProfitMargin = (profitMargin * 0.4)/workerQuantity;
-        return partialProfitMargin;
+        return (profitMargin * FOURTY_PERCENT_INDEX)/workerQuantity;
     }
 }

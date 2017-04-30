@@ -3,6 +3,7 @@ package Input;
 import company.Company;
 
 import employee.Employee;
+
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -15,7 +16,6 @@ public class Input {
     private Integer employeeQuantity;
     private String employeeRole;
     private Integer annualEmployeePerformance;
-    private Employee employee;
     private InputValidation inputValidation = new InputValidation();
     private final String TRAINEE = "Trainee";
     private final String ANALISTIC = "Analistic";
@@ -26,7 +26,8 @@ public class Input {
         this.employeeRole = employeeRole;
     }
 
-    public Input() {}
+    public Input() {
+    }
 
     public void readCompanyInformation() {
         try {
@@ -90,11 +91,12 @@ public class Input {
         }
     }
 
-    public Employee createEmployeeRoleInformation(Company company) throws IllegalAccessException, InstantiationException, ClassNotFoundException, NoSuchMethodException, InvocationTargetException {
-        Class<?> clazz = Class.forName("employee." + this.employeeRole);
-        Constructor<?> constructor = clazz.getConstructor(Integer.class, Company.class);
-        employee = (Employee) constructor.newInstance(annualEmployeePerformance, company);
-        return employee;
+    private Method readValidProfitMarginMethod() throws NoSuchMethodException {
+        return this.getClass().getDeclaredMethod("readValidProfitMargin", new Class[0]);
+    }
+
+    private Method readValidEmployeeQuantityMethod() throws NoSuchMethodException {
+        return this.getClass().getDeclaredMethod("readValidEmployeeQuantity", new Class[0]);
     }
 
     public Integer getEmployeeQuantity() {
@@ -105,11 +107,11 @@ public class Input {
         return profitMargin;
     }
 
-    private Method readValidProfitMarginMethod() throws NoSuchMethodException {
-        return this.getClass().getDeclaredMethod("readValidProfitMargin", new Class[0]);
+    public Integer getEmployeePerformance() {
+        return annualEmployeePerformance;
     }
 
-    private Method readValidEmployeeQuantityMethod() throws NoSuchMethodException {
-        return this.getClass().getDeclaredMethod("readValidEmployeeQuantity", new Class[0]);
+    public String getEmployeeRole() {
+        return employeeRole;
     }
 }
