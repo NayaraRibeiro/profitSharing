@@ -16,7 +16,7 @@ public class Input {
     private String employeeRole;
     private Integer annualEmployeePerformance;
     private Employee employee;
-    private InpuValidation inpuValidation = new InpuValidation();
+    private InputValidation inputValidation = new InputValidation();
     private final String TRAINEE = "Trainee";
     private final String ANALISTIC = "Analistic";
     private final String MANAGER = "Manager";
@@ -26,9 +26,7 @@ public class Input {
         this.employeeRole = employeeRole;
     }
 
-    public Input() {
-
-    }
+    public Input() {}
 
     public void readCompanyInformation() {
         try {
@@ -39,16 +37,16 @@ public class Input {
         }
     }
 
-    public void readValidProfitMargin() throws InputMismatchException, NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+    private void readValidProfitMargin() throws InputMismatchException, NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         System.out.println("Digite o valor da margem de lucro total da empresa:");
         Scanner inputUserProfitMargin = new Scanner(System.in);
-        this.profitMargin = inpuValidation.retrieveValidDouble(inputUserProfitMargin, readValidProfitMarginMethod());
+        this.profitMargin = inputValidation.retrieveValidDouble(inputUserProfitMargin, readValidProfitMarginMethod());
     }
 
-    public void readValidEmployeeQuantity() throws InputMismatchException, NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+    private void readValidEmployeeQuantity() throws InputMismatchException, NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         System.out.println("Digite a quantidade de funcionários da empresa:");
         Scanner inputUserWorkerQuantity = new Scanner(System.in);
-        this.employeeQuantity = inpuValidation.retrieveValidInteger(inputUserWorkerQuantity, readValidEmployeeQuantityMethod());
+        this.employeeQuantity = inputValidation.retrieveValidInteger(inputUserWorkerQuantity, readValidEmployeeQuantityMethod());
     }
 
     public void readEmployeeInformation() {
@@ -64,7 +62,7 @@ public class Input {
         }
     }
 
-    public void readAnnualEmployeePerformance() {
+    private void readAnnualEmployeePerformance() {
         System.out.println("Digite a performance anual do funcionário: ");
         Scanner inputUserAnnualEmployeePerformance = new Scanner(System.in);
         if (inputUserAnnualEmployeePerformance.hasNextInt()) {

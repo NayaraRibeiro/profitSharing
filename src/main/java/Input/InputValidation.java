@@ -4,7 +4,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Scanner;
 
-public class InpuValidation {
+public class InputValidation {
 
     public double retrieveValidDouble(Scanner inputScanner, Method method) throws InvocationTargetException, IllegalAccessException {
         double doubleValue = -1;
