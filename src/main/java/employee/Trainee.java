@@ -2,8 +2,10 @@ package employee;
 
 public class Trainee extends EmployeeRole implements IEmployeeRole {
 
-    public static final int TRAINEE_GRADE = 1;
-    private String role;
+    private static final String TRAINEE = "Trainee";
+    private static final int TRAINEE_GRADE = 1;
+
+    private final String role;
 
     public Trainee(String role) {
         super(role);

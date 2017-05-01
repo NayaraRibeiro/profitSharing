@@ -2,7 +2,9 @@ package employee;
 
 public class Manager extends EmployeeRole implements IEmployeeRole{
 
-    public static final int MANAGER_GRADE = 3;
+    private static final String MANAGER = "Manager";
+    private static final int MANAGER_GRADE = 3;
+
     private final String role;
 
     public Manager(String role) {

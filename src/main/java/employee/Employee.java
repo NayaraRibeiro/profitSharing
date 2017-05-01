@@ -13,18 +13,18 @@ public class Employee {
         this.availableSharingProfitMarginCompany = availableProfitSharingCompany;
     }
 
-    public Double showProfitSharingBenefit() {
+    public Double showProfitSharingBenefit() throws ClassNotFoundException {
         Double benefit = calculateProfitSharingBenefit();
         System.out.print("PL para " + role + " com performance anual " + annualEmployeePerformance + " é " + benefit);
         return benefit;
     }
 
-    private Double calculateProfitSharingBenefit() {
+    private Double calculateProfitSharingBenefit() throws ClassNotFoundException {
         Double profitSharingBenefit = annualEmployeePerformance * getGradeByRole() * availableSharingProfitMarginCompany;
         return profitSharingBenefit;
     }
 
-    private Integer getGradeByRole() {
+    private Integer getGradeByRole() throws ClassNotFoundException {
         employeeRole = new EmployeeRole(role);
         IEmployeeRole iEmployeeRole = employeeRole.getInstance();
         return iEmployeeRole.getGrade();

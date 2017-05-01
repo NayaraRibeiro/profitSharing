@@ -18,19 +18,19 @@ public class Input {
         inputEmployee.readEmployeeInformation();
     }
 
-    public Integer getCompanyEmployeeQuantity() {
-        return inputCompany.getEmployeeQuantity();
-    }
-
     public double getProfitMarginCompany() {
         return inputCompany.getProfitMargin();
     }
 
-    public Integer getAnnualEmployeePerformance() {
-        return inputEmployee.getAnnualPerformance();
+    public Integer getCompanyEmployeeQuantity() {
+        return inputCompany.getEmployeeQuantity();
     }
 
     public String getEmployeeRole() {
         return inputEmployee.getRole();
+    }
+
+    public Integer getAnnualEmployeePerformance() {
+        return inputEmployee.getAnnualPerformance();
     }
 }

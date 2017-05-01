@@ -6,13 +6,14 @@ public class App {
 
     public static final String NOT_PROFIT_SHARING = "Não haverá participação dos lucros.";
 
-    public static void main(String [] args) {
+    public static void main(String [] args) throws ClassNotFoundException {
         Input input = new Input();
 
         input.readCompanyInformation();
         Company company = new Company(input.getProfitMarginCompany(), input.getCompanyEmployeeQuantity());
 
         if (company.hasProfitSharing()){
+
             input.readEmployeeInformation();
             Double availableProfitSharingCompany =  company.calculateAvailableProfitSharing();
             Employee employee = new Employee(input.getEmployeeRole(), input.getAnnualEmployeePerformance(), availableProfitSharingCompany);
