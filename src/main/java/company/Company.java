@@ -1,26 +1,32 @@
 package company;
 
 public class Company {
-    public static final int MULTIPLIER_INDEX = 10000;
-    public static final double FOURTY_PERCENT_INDEX = 0.4;
-    private Integer goalOfProfitSharing;
-    private double profitMargin;
-    private Integer workerQuantity;
 
-    public Company(double profitMargin, Integer workerQuantity) {
-        this.profitMargin = profitMargin;
+    private static final int MULTIPLIER_INDEX = 10000;
+    private static final double FOURTY_PERCENT_INDEX = 0.4;
+
+    private final double totalProfitMarginCompany;
+    private final Integer workerQuantity;
+
+    public Company(double totalProfitMarginCompany, Integer workerQuantity) {
+        this.totalProfitMarginCompany = totalProfitMarginCompany;
         this.workerQuantity = workerQuantity;
-        this.goalOfProfitSharing = MULTIPLIER_INDEX * workerQuantity;
+
+    }
+
+    public Double calculateAvailableProfitSharing() {
+        return (totalProfitMarginCompany * FOURTY_PERCENT_INDEX) / workerQuantity;
     }
 
     public boolean hasProfitSharing() {
-        if (profitMargin >= goalOfProfitSharing){
+        Integer goalOfProfitSharing = MULTIPLIER_INDEX * workerQuantity;
+        if (isTotalProfitMarginCompanyBiggerThan(goalOfProfitSharing)) {
             return true;
         }
         return false;
     }
 
-    public Double calculatePartialProfitMargin() {
-        return (profitMargin * FOURTY_PERCENT_INDEX)/workerQuantity;
+    private boolean isTotalProfitMarginCompanyBiggerThan(Integer goalOfProfitSharing) {
+        return totalProfitMarginCompany >= goalOfProfitSharing;
     }
 }

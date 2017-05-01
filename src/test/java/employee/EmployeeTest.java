@@ -1,7 +1,6 @@
 package employee;
 
 import company.Company;
-import org.junit.Before;
 import org.junit.Test;
 
 import java.lang.reflect.InvocationTargetException;
@@ -17,7 +16,7 @@ public class EmployeeTest {
     @Test
     public void shouldCalculateProfitSharingBenefitForTrainee() throws ClassNotFoundException, NoSuchMethodException, InstantiationException, IllegalAccessException, InvocationTargetException {
         company = new Company(100000, 10);
-        employee = new Employee("Trainee", 3, company.calculatePartialProfitMargin());
+        employee = new Employee("Trainee", 3, company.calculateAvailableProfitSharing());
 
         Double profitSharingBenefit = employee.showProfitSharingBenefit();
         assertThat(profitSharingBenefit, is((double) 12000));
@@ -26,7 +25,7 @@ public class EmployeeTest {
     @Test
     public void shouldCalculateProfitSharingBenefitForAnalista() throws ClassNotFoundException, NoSuchMethodException, InstantiationException, IllegalAccessException, InvocationTargetException {
         company = new Company(100000, 10);
-        employee = new Employee("Analistic", 3, company.calculatePartialProfitMargin());
+        employee = new Employee("Analyst", 3, company.calculateAvailableProfitSharing());
 
         Double profitSharingBenefit = employee.showProfitSharingBenefit();
         assertThat(profitSharingBenefit, is((double) 24000));
@@ -34,7 +33,7 @@ public class EmployeeTest {
     @Test
     public void shouldCalculateProfitSharingBenefitForManager() throws ClassNotFoundException, NoSuchMethodException, InstantiationException, IllegalAccessException, InvocationTargetException {
         company = new Company(100000, 10);
-        employee = new Employee("Manager", 3, company.calculatePartialProfitMargin());
+        employee = new Employee("Manager", 3, company.calculateAvailableProfitSharing());
 
         Double profitSharingBenefit = employee.showProfitSharingBenefit();
         assertThat(profitSharingBenefit, is((double) 36000));
@@ -43,7 +42,7 @@ public class EmployeeTest {
     @Test(expected = ClassNotFoundException.class)
     public void shouldNotCalculateProfitSharingBenefitForAnalista() throws ClassNotFoundException, NoSuchMethodException, InstantiationException, IllegalAccessException, InvocationTargetException {
         company = new Company(100000, 10);
-        employee = new Employee("Analista", 3, company.calculatePartialProfitMargin());
+        employee = new Employee("Analista", 3, company.calculateAvailableProfitSharing());
 
         employee.showProfitSharingBenefit();
     }

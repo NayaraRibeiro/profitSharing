@@ -46,7 +46,7 @@ public class CompanyTest {
         Integer workerQuantity = 10;
         company = new Company(profitMargin, workerQuantity);
 
-        Double partialProfitMargin = company.calculatePartialProfitMargin();
+        Double partialProfitMargin = company.calculateAvailableProfitSharing();
 
         assertThat(partialProfitMargin, is((double) 4000));
     }

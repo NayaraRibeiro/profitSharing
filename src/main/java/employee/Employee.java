@@ -1,32 +1,30 @@
 package employee;
 
-import java.lang.reflect.InvocationTargetException;
-
 public class Employee {
 
     private final String role;
-    private final Double partialProfitMargin;
+    private final Double availableSharingProfitMarginCompany;
     private final Integer annualEmployeePerformance;
     private EmployeeRole employeeRole;
 
-    public Employee(String role, Integer annualEmployeePerformance, Double partialProfitMargin) {
+    public Employee(String role, Integer annualEmployeePerformance, Double availableProfitSharingCompany) {
         this.annualEmployeePerformance = annualEmployeePerformance;
         this.role = role;
-        this.partialProfitMargin = partialProfitMargin;
+        this.availableSharingProfitMarginCompany = availableProfitSharingCompany;
     }
 
-    public Double showProfitSharingBenefit() throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
+    public Double showProfitSharingBenefit() {
         Double benefit = calculateProfitSharingBenefit();
-        System.out.print("PL " + benefit);
+        System.out.print("PL para " + role + " com performance anual " + annualEmployeePerformance + " é " + benefit);
         return benefit;
     }
 
-    private Double calculateProfitSharingBenefit() throws ClassNotFoundException, NoSuchMethodException, InstantiationException, IllegalAccessException, InvocationTargetException {
-        Double profitSharingBenefit = annualEmployeePerformance * getGradeByRole() * partialProfitMargin;
+    private Double calculateProfitSharingBenefit() {
+        Double profitSharingBenefit = annualEmployeePerformance * getGradeByRole() * availableSharingProfitMarginCompany;
         return profitSharingBenefit;
     }
 
-    private Integer getGradeByRole() throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
+    private Integer getGradeByRole() {
         employeeRole = new EmployeeRole(role);
         IEmployeeRole iEmployeeRole = employeeRole.getInstance();
         return iEmployeeRole.getGrade();
