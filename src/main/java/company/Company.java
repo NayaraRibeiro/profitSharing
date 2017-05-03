@@ -11,11 +11,13 @@ public class Company {
     public Company(double totalProfitMarginCompany, Integer workerQuantity) {
         this.totalProfitMarginCompany = totalProfitMarginCompany;
         this.workerQuantity = workerQuantity;
-
     }
 
     public Double calculateAvailableProfitSharing() {
-        return (totalProfitMarginCompany * FOURTY_PERCENT_INDEX) / workerQuantity;
+        if(workerQuantity > 0) {
+            return (totalProfitMarginCompany * FOURTY_PERCENT_INDEX) / workerQuantity;
+        }
+        return (double)0;
     }
 
     public boolean hasProfitSharing() {

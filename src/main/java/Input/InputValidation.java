@@ -1,9 +1,9 @@
 package Input;
 
+import Input.exception.CompanyException;
+import Input.exception.EmployeeException;
 import org.apache.commons.lang.StringUtils;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.util.Scanner;
 
 class InputValidation {
@@ -13,62 +13,56 @@ class InputValidation {
     private final String MANAGER = "Manager";
     private static final String INVALID_VALUE = "Valor inválido!";
 
-    double retrieveValidDouble(Scanner inputScanner, Method method) throws InvocationTargetException, IllegalAccessException {
-        double doubleValue = -1;
+    public double retrieveValidDouble(Scanner inputScanner) throws CompanyException {
+        double doubleValue;
         if (inputScanner.hasNextDouble()) {
             doubleValue = inputScanner.nextDouble();
         } else {
-            System.out.println(INVALID_VALUE);
-            method.invoke(new InputCompany());
+            throw new CompanyException(INVALID_VALUE);
         }
         return doubleValue;
     }
 
-    Integer retrieveValidInteger(Scanner inputScanner, Method method) throws InvocationTargetException, IllegalAccessException {
-        Integer integerValid = 0;
+    public Integer retrieveValidInteger(Scanner inputScanner) throws CompanyException {
+        Integer integerValid;
         if (inputScanner.hasNextInt()) {
             integerValid = inputScanner.nextInt();
         } else {
-            System.out.println(INVALID_VALUE);
-            method.invoke(new InputCompany());
+            throw new CompanyException(INVALID_VALUE);
         }
         return integerValid;
     }
 
-    Integer retrieveValidAnnualPerformance(Scanner inputScanner, Method readAnnualPerformance) throws InvocationTargetException, IllegalAccessException {
-        Integer validAnnualPerformance = 0;
+    public Integer retrieveValidAnnualPerformance(Scanner inputScanner) throws EmployeeException {
+        Integer validAnnualPerformance;
         if (inputScanner.hasNextInt()) {
             validAnnualPerformance = inputScanner.nextInt();
-            verifyValidAnnualPerformance(validAnnualPerformance, readAnnualPerformance);
+            verifyValidAnnualPerformance(validAnnualPerformance);
         } else {
-            System.out.println(INVALID_VALUE);
-            readAnnualPerformance.invoke(new InputEmployee());
+            throw new EmployeeException(INVALID_VALUE);
         }
         return validAnnualPerformance;
     }
 
-    String retrieveValidRole(Scanner inputScanner, Method readRoleMethod) throws InvocationTargetException, IllegalAccessException {
+    public String retrieveValidRole(Scanner inputScanner) throws EmployeeException {
         String validRole = "";
         if (inputScanner.hasNext()) {
             validRole = inputScanner.next();
             validRole = StringUtils.capitalize(StringUtils.lowerCase(validRole));
-            verifyValidRole(validRole, readRoleMethod);
-        } else {
-            System.out.println(INVALID_VALUE);
-            readRoleMethod.invoke(new InputCompany());
+            verifyValidRole(validRole);
         }
         return validRole;
     }
 
-    private void verifyValidAnnualPerformance(Integer validAnnualPerformance, Method readAnnualPerformance) throws InvocationTargetException, IllegalAccessException {
+    private void verifyValidAnnualPerformance(Integer validAnnualPerformance) throws EmployeeException {
         if (isNotValidAnnualPerformance(validAnnualPerformance)) {
-            readAnnualPerformance.invoke(new InputEmployee());
+            throw new EmployeeException(INVALID_VALUE);
         }
     }
 
-    private void verifyValidRole(String validRole, Method readRoleMethod) throws InvocationTargetException, IllegalAccessException {
+    private void verifyValidRole(String validRole) throws EmployeeException {
         if (isNotValidRole(validRole)) {
-            readRoleMethod.invoke(new InputEmployee());
+            throw new EmployeeException(INVALID_VALUE);
         }
     }
 

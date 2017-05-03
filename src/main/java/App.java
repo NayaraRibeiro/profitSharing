@@ -1,4 +1,6 @@
 import Input.Input;
+import Input.exception.CompanyException;
+import Input.exception.EmployeeException;
 import company.Company;
 import employee.Employee;
 
@@ -6,7 +8,7 @@ public class App {
 
     public static final String NOT_PROFIT_SHARING = "Não haverá participação dos lucros.";
 
-    public static void main(String [] args) throws ClassNotFoundException {
+    public static void main(String [] args) throws ClassNotFoundException, CompanyException, EmployeeException {
         Input input = new Input();
 
         input.readCompanyInformation();

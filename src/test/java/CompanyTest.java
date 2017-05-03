@@ -33,13 +33,12 @@ public class CompanyTest {
     @Test
     public void shouldNotHasProfitSharingWhenProfitMarginIsSmallerThanGoalOfProfitSharing() {
 
-        Integer profitMargin = 99000;
+        Integer profitMargin = 99999;
         Integer workerQuantity = 10;
         company = new Company(profitMargin, workerQuantity);
 
         assertEquals(false, company.hasProfitSharing());
     }
-
     @Test
     public void shouldCalculatePartialProfitMargin() {
         Integer profitMargin = 100000;
@@ -49,5 +48,15 @@ public class CompanyTest {
         Double partialProfitMargin = company.calculateAvailableProfitSharing();
 
         assertThat(partialProfitMargin, is((double) 4000));
+    }
+
+    @Test
+    public void shouldReturnZeroForAvailableProfitSharingWhenWorkQuantityIsZero() {
+
+        Integer profitMargin = 10000;
+        Integer workerQuantity = 0;
+        company = new Company(profitMargin, workerQuantity);
+
+        assertThat(company.calculateAvailableProfitSharing(), is((double)0));
     }
 }

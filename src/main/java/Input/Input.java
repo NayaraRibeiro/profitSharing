@@ -1,5 +1,8 @@
 package Input;
 
+import Input.exception.CompanyException;
+import Input.exception.EmployeeException;
+
 public class Input {
 
     private InputCompany inputCompany;
@@ -10,11 +13,11 @@ public class Input {
         inputEmployee = new InputEmployee();
     }
 
-    public void readCompanyInformation() {
+    public void readCompanyInformation() throws CompanyException {
         inputCompany.readCompanyInformation();
     }
 
-    public void readEmployeeInformation() {
+    public void readEmployeeInformation() throws EmployeeException {
         inputEmployee.readEmployeeInformation();
     }
 
